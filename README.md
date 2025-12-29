@@ -15,6 +15,10 @@ A 3D interactive visualization of a neural network trained on MNIST handwritten 
 
 Stopped now: Entire simple model of sigmoid neural networks is in js. turns out people don't visualize this because it's a pain in the ass. so much pain. 
 
+demo: 
+![Demo image](Demo.png "demonstration image on UI")
+
+
 ## Features
 
 - **Custom Neural Network**: Fully implemented backpropagation neural network from scratch in pure JavaScript (no ML frameworks)
@@ -230,11 +234,6 @@ NetworkToDisplay.weightToColor(weight)  // Convert weight value to color (red/wh
 - **Color updates**: Real-time weight-to-color conversion with interpolation
 - **Rendering**: Optimized for dynamic object creation/deletion with orbit controls
 
-## Browser Requirements
-
-- WebGL support (modern browsers: Chrome, Firefox, Safari, Edge)
-- ES6 JavaScript support
-- Minimum 1GB RAM recommended
 
 ## Dependencies
 
