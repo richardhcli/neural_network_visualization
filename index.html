@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Scene</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .controls-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #00d4ff;
+            font-size: 12px;
+            max-width: 250px;
+        }
+
+        .controls-info h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .control-item {
+            margin-bottom: 8px;
+        }
+
+        .control-item strong {
+            color: #00d4ff;
+        }
+
+        /* HUD Top Bar */
+        .hud-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(20, 25, 50, 0.95) 100%);
+            border-bottom: 2px solid #00d4ff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+            z-index: 1000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hud-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hud-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00d4ff;
+            letter-spacing: 1px;
+        }
+
+        .epoch-button {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border: none;
+            color: #0a0e27;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .epoch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .epoch-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.4);
+        }
+
+        .hud-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .accuracy-label {
+            font-size: 14px;
+            color: #ffd93d;
+            font-weight: 600;
+        }
+
+        .accuracy-value {
+            font-size: 16px;
+            color: #4ecdc4;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100vh;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <!-- HUD Top Bar -->
+    <div class="hud-container">
+        <div class="hud-left">
+            <div class="hud-title">Neural Network Visualizer</div>
+            <button class="epoch-button" id="epochButton">Next Epoch</button>
+            <!-- epoch counter: -->
+            <div class="epoch-counter" id="epochCounter" style="color: #ffffff; font-weight: bold; margin-left: 15px;">Epoch: 0</div>
+
+            <!-- loading / minibatch counter: -->
+            <div class="minibatch-counter" id="minibatchCounter" style="color: #ffffff; font-weight: bold; margin-left: 15px;">Minibatch: 0</div>
+
+            <!-- reset camera view button-->
+            <button class="button" id="resetCameraButton" style="margin-left: 15px; background: linear-gradient(135deg, #ff6f61 0%, #d64541 100%);">Reset Camera</button>
+        </div>
+         
+        <div class="hud-right">
+            <span class="accuracy-label">Accuracy:</span>
+            <span class="accuracy-value" id="accuracyValue">--</span>
+        </div>
+    </div>
+
+    <div class="controls-info">
+        <h3>Controls</h3>
+        <div class="control-item">
+            <strong>Left Click + Drag:</strong> Rotate
+        </div>
+        <div class="control-item">
+            <strong>Right Click + Drag:</strong> Pan
+        </div>
+        <div class="control-item">
+            <strong>Scroll Wheel:</strong> Zoom
+        </div>
+        <div class="control-item">
+            <strong>Double Click:</strong> Auto Focus
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+
+
+
+    <script src="SphereManager.js"></script>
+    <script src="ConnectionManager.js"></script>
+    <script src="MNIST_dataset.js"></script>
+    <script src="preprocessing.js"></script>
+    <script src="CustomNeuralNetwork.js"></script>
+
+    <script src="NetworkToDisplay.js"></script>
+    <script src="SceneManager.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
