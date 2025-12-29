@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Future Enhancements
 
 - [ ] Real-time training animation via epochs -> change in colors. 
@@ -269,3 +270,16 @@ This is an educational project for learning machine learning and 3D visualizatio
 ## Author
 
 Created as part of a custom neural network learning project.
+=======
+---
+title: Simple Neural Network Visualizer
+emoji: 🐨
+colorFrom: yellow
+colorTo: red
+sdk: static
+pinned: false
+short_description: 'visualize a densely connected neural network with training. '
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+>>>>>>> 52e76beeb37a4d09be21fbb357cbbac4e7289b73
