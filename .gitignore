@@ -1,0 +1,17 @@
+## Ignore image assets
+# Common raster formats
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+
+# Vector and animations (optional to ignore)
+*.svg
+*.apng
+
+# Project images folder
+images/
+
